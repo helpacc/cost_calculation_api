@@ -13,10 +13,9 @@ RSpec.describe 'Cost Calculation API' do
     JSON.parse(last_response.body)
   end
 
-  # it would look clumsy if we inline :query param default value
+  # arguably it looks clumsy with :query default value inlined in method definition
   def ask_api_for_cost(query: nil)
-    query ||= {}
-    get('/v1/cost', query)
+    get('/v1/cost', query || { lat: '60', long: '60' })
   end
 
   it 'responds successfully with JSON object' do
@@ -30,5 +29,16 @@ RSpec.describe 'Cost Calculation API' do
     ask_api_for_cost
     expect(json_body['cost_in_cents']).to be_an(Integer)
     expect(json_body['currency']).to be_a(String)
+  end
+
+  it 'requires "lat" and "long" query parameters' do
+    ask_api_for_cost(query: {})
+    expect(last_response.status).to eq 422
+
+    ask_api_for_cost(query: { lat: '60' })
+    expect(last_response.status).to eq 422
+
+    ask_api_for_cost(query: { long: '60' })
+    expect(last_response.status).to eq 422
   end
 end
