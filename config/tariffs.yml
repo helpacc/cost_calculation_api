@@ -1,0 +1,8 @@
+tariffs:
+  -
+    :currency: RUB
+    :dist_unit_cost: 38
+    :id: business
+    :request_cost: 150
+    :minute_cost: 15
+default: business

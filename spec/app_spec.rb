@@ -3,6 +3,8 @@ require_relative '../app'
 
 RSpec.describe 'Cost Calculation API' do
   include Rack::Test::Methods
+  before(:all) { Tariff.load }
+  after(:all) { Tariff.clear_loaded }
 
   describe 'GET /v1/cost' do
     # it might look clumsy with default value inlined in method definition
@@ -31,6 +33,14 @@ RSpec.describe 'Cost Calculation API' do
       expect(last_response.status).to eq 422
 
       ask_api_for_cost(query: { long: '60' })
+      expect(last_response.status).to eq 422
+    end
+
+    it 'allows to pass "tariff" attribute' do
+      get('/v1/cost', lat: '60', long: '60', tariff: Tariff.default.id)
+      expect(last_response.status).to eq 200
+
+      get('/v1/cost', lat: '60', long: '60', tariff: 'non_existing')
       expect(last_response.status).to eq 422
     end
   end
