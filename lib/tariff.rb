@@ -7,13 +7,15 @@ class Tariff
               :dist_unit_cost, # kilometer or mile
               :id, # symbolic name
               :request_cost,
-              :minute_cost
+              :minute_cost,
+              :minimal_cost
 
   # WARNING: all costs are in cents
   def initialize(attrs)
     @request_cost = attrs.fetch(:request_cost)
     @minute_cost = attrs.fetch(:minute_cost)
     @dist_unit_cost = attrs.fetch(:dist_unit_cost)
+    @minimal_cost = attrs.fetch(:minimal_cost)
     @currency = attrs[:currency] || 'RUB'
     @id = attrs[:id]
   end

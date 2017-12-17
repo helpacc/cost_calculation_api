@@ -10,7 +10,8 @@ class CostCalculator
   def calculate
     dist_cost = @route.distance * @tariff.dist_unit_cost
     time_cost = @route.minutes * @tariff.minute_cost
-    cents = (@tariff.request_cost + dist_cost + time_cost).to_i
-    Money.new(cents, @tariff.currency)
+    total = (@tariff.request_cost + dist_cost + time_cost).to_i
+    final_cost = [total, @tariff.minimal_cost].max
+    Money.new(final_cost, @tariff.currency)
   end
 end

@@ -6,4 +6,5 @@ tariffs:
     :id: business
     :request_cost: 15000
     :minute_cost: 1500
+    :minimal_cost: 29900
 default: business
