@@ -1,0 +1,54 @@
+{
+   "swagger":"2.0",
+   "info":{
+      "version":"1.0",
+      "title":"Cost Calculation API"
+   },
+   "basePath":"/",
+   "scheme":"http",
+   "consumes":["application/json"],
+   "produces":["application/json"],
+   "paths":{
+      "/v1/cost":{
+         "get":{
+            "tags":["Cost"],
+            "parameters":[
+               {
+                  "name":"departure_lat",
+                  "in":"query",
+                  "type":"string",
+                  "default": "55.5"
+               },
+               {
+                  "name":"departure_long",
+                  "in":"query",
+                  "default": "60.0",
+                  "type":"string"
+               },
+               {
+                  "name":"destination_lat",
+                  "in":"query",
+                  "type":"string",
+                  "default": "56.5"
+               },
+               {
+                  "name":"destination_long",
+                  "in":"query",
+                  "default": "61.0",
+                  "type":"string"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "schema":{
+                     "properties":{
+                        "cost_in_cents": { "type":"integer" },
+                        "currency": { "type":"string" }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
