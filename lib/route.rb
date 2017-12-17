@@ -1,4 +1,4 @@
-# value object for route detaild
+# value object for route details
 class Route
   attr_reader :minutes, :distance
 

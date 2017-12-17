@@ -1,7 +1,8 @@
 require 'sinatra'
 require 'sinatra/json'
+require_relative 'lib/config'
 require_relative 'lib/cost_calculator'
-require_relative 'lib/route'
+require_relative 'lib/route_builder'
 require_relative 'lib/tariff'
 
 get '/v1/cost' do
@@ -9,8 +10,7 @@ get '/v1/cost' do
   tariff = choose_tariff
   return abort_on_invalid_tariff if tariff_set? && !tariff
 
-  route = Route.new(minutes: 15, distance: 5.0)
-  cost = CostCalculator.new(route, tariff).calculate
+  cost = CostCalculator.new(build_route, tariff).calculate
   json(cost_in_cents: cost.cents, currency: cost.currency)
 end
 
@@ -35,6 +35,15 @@ end
 def choose_tariff
   return Tariff.default unless tariff_set?
   Tariff.find(params['tariff'])
+end
+
+def build_route
+  RouteBuilder.new(
+    from_lat: params['from_lat'],
+    from_long: params['from_long'],
+    to_lat: params['to_lat'],
+    to_long: params['to_long']
+  ).build
 end
 
 def tariff_set?

@@ -1,4 +1,5 @@
 require 'rack/test'
+require 'webmock/rspec'
 require_relative '../app'
 
 RSpec.describe 'Cost Calculation API' do
@@ -13,7 +14,13 @@ RSpec.describe 'Cost Calculation API' do
 
     def coord_params(except: nil)
       default = { from_lat: '60', from_long: '60', to_lat: '60', to_long: '60' }
-      default.reject { |key, value| except == key }
+      default.reject { |key, _| except == key }
+    end
+
+    before do
+      stub_request(:get, Config.route_builder_endpoint)
+        .with(query: hash_including(:from_lat, :from_long, :to_lat, :to_long))
+        .to_return(body: { distance: 5, minutes: 15 }.to_json)
     end
 
     it 'responds successfully with JSON object' do

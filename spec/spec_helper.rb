@@ -13,6 +13,7 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'dotenv/load'
 require 'pry-byebug'
 ENV['RACK_ENV'] ||= 'test'
 RSpec.configure do |config|
