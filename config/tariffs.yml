@@ -1,8 +1,9 @@
+# all costs should be set in cents
 tariffs:
   -
     :currency: RUB
-    :dist_unit_cost: 38
+    :dist_unit_cost: 3800
     :id: business
-    :request_cost: 150
-    :minute_cost: 15
+    :request_cost: 15000
+    :minute_cost: 1500
 default: business
