@@ -18,14 +18,14 @@
                   "in":"query",
                   "type":"string",
                   "default": "59.9354838",
-                  "description": "Departure latitude"
+                  "description": "Origin latitude"
                },
                {
                   "name":"from_long",
                   "in":"query",
                   "default": "30.3446801",
                   "type":"string",
-                  "description": "Departure longitude"
+                  "description": "Origin longitude"
                },
                {
                   "name":"to_lat",
