@@ -17,13 +17,13 @@
                   "name":"from_lat",
                   "in":"query",
                   "type":"string",
-                  "default": "55.5",
+                  "default": "59.9354838",
                   "description": "Departure latitude"
                },
                {
                   "name":"from_long",
                   "in":"query",
-                  "default": "60.0",
+                  "default": "30.3446801",
                   "type":"string",
                   "description": "Departure longitude"
                },
@@ -31,13 +31,13 @@
                   "name":"to_lat",
                   "in":"query",
                   "type":"string",
-                  "default": "56.5",
+                  "default": "59.9424165",
                   "description": "Destination latitude"
                },
                {
                   "name":"to_long",
                   "in":"query",
-                  "default": "61.0",
+                  "default": "30.2845264",
                   "type":"string",
                   "description": "Destination longitude"
                }

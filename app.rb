@@ -5,6 +5,8 @@ require_relative 'lib/cost_calculator'
 require_relative 'lib/route_builder'
 require_relative 'lib/tariff'
 
+set :show_exceptions, false
+
 get '/v1/cost' do
   return abort_on_coords_missing if any_coord_missing?
   tariff = choose_tariff

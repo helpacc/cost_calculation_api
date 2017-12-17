@@ -8,11 +8,11 @@ gem 'dotenv', '~> 2.2'
 gem 'httparty', '0.15.5'
 gem 'money', '~> 6.10'
 gem 'puma', '~> 3.11'
-gem 'webmock', '~> 3.1'
 
 group :development, :test do
   gem 'pry-byebug'
   gem 'rack-test', '~> 0.8'
   gem 'rspec', '~> 3.7'
   gem 'rubocop', '~> 0.52'
+  gem 'webmock', '~> 3.1'
 end
