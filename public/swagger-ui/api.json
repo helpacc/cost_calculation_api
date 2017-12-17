@@ -14,28 +14,32 @@
             "tags":["Cost"],
             "parameters":[
                {
-                  "name":"departure_lat",
+                  "name":"from_lat",
                   "in":"query",
                   "type":"string",
-                  "default": "55.5"
+                  "default": "55.5",
+                  "description": "Departure latitude"
                },
                {
-                  "name":"departure_long",
+                  "name":"from_long",
                   "in":"query",
                   "default": "60.0",
-                  "type":"string"
+                  "type":"string",
+                  "description": "Departure longitude"
                },
                {
-                  "name":"destination_lat",
+                  "name":"to_lat",
                   "in":"query",
                   "type":"string",
-                  "default": "56.5"
+                  "default": "56.5",
+                  "description": "Destination latitude"
                },
                {
-                  "name":"destination_long",
+                  "name":"to_long",
                   "in":"query",
                   "default": "61.0",
-                  "type":"string"
+                  "type":"string",
+                  "description": "Destination longitude"
                }
             ],
             "responses":{

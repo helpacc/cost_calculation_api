@@ -5,7 +5,7 @@ require_relative 'lib/route'
 require_relative 'lib/tariff'
 
 get '/v1/cost' do
-  return abort_on_lat_long_missing if lat_or_long_missing?
+  return abort_on_coords_missing if any_coord_missing?
   tariff = choose_tariff
   return abort_on_invalid_tariff if tariff_set? && !tariff
 
@@ -16,13 +16,15 @@ end
 
 private
 
-def lat_or_long_missing?
-  params['lat'].to_s.empty? || params['long'].to_s.empty?
+def any_coord_missing?
+  %i[from_lat from_long to_lat to_long].detect do |param_name|
+    params[param_name].to_s.empty?
+  end
 end
 
-def abort_on_lat_long_missing
+def abort_on_coords_missing
   status :unprocessable_entity
-  json(message: '"lat" and "long" params should be present')
+  json(message: 'from_lat, from_long, to_lat, to_long should be set')
 end
 
 def abort_on_invalid_tariff
