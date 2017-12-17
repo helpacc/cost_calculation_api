@@ -16,6 +16,10 @@ get '/v1/cost' do
   json(cost_in_cents: cost.cents, currency: cost.currency)
 end
 
+error Errno::ECONNREFUSED do
+  json(message: "Looks like RouteBuilder API isn't accessible")
+end
+
 private
 
 def any_coord_missing?
