@@ -40,6 +40,13 @@
                   "default": "30.2845264",
                   "type":"string",
                   "description": "Destination longitude"
+               },
+               {
+                  "name":"tariff",
+                  "in":"query",
+                  "default": "business",
+                  "type":"string",
+                  "description": "Tariff"
                }
             ],
             "responses":{
