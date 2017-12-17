@@ -10,10 +10,9 @@ cd cost_calculation_api
 bundle
 rake # тесты
 puma
-
-
-open http://localhost:3000/swagger-ui/index.html#!/Cost/get_v1_cost
 ```
+
+[http://localhost:3000/swagger-ui/index.html#!/Cost/get_v1_cost](http://localhost:3000/swagger-ui/index.html#!/Cost/get_v1_cost)
 
 ## Детали API
 
